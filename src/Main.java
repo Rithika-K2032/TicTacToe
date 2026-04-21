@@ -1,14 +1,19 @@
-import java.util.Scanner;
-public class Main
-{
+public class Main {
     public static void main(String[] args) {
-        int slot = getUserSlot();
-        System.out.println("Slot entered: " + slot);
+        int slot = 7;
+        System.out.println("Row: " + getRowFromSlot(slot));
+        System.out.println("Column: " + getColFromSlot(slot));
     }
-    static int getUserSlot() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a slot number (1-9): ");
-        int slot = scanner.nextInt();
-        return slot;
+    static int getRowFromSlot(int slot) {
+        if (slot < 1 || slot > 9) {
+            throw new IllegalArgumentException("Slot must be between 1 and 9");
+        }
+        return (slot - 1) / 3;
+    }
+    static int getColFromSlot(int slot) {
+        if (slot < 1 || slot > 9) {
+            throw new IllegalArgumentException("Slot must be between 1 and 9");
+        }
+        return (slot - 1) % 3;
     }
 }
