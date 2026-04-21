@@ -1,19 +1,20 @@
 public class Main {
+    static char[][] board = {
+            {'-', '-', '-'},
+            {'-', '-', '-'},
+            {'-', '-', '-'}
+    };
     public static void main(String[] args) {
-        int slot = 7;
-        System.out.println("Row: " + getRowFromSlot(slot));
-        System.out.println("Column: " + getColFromSlot(slot));
+        System.out.println(isValidMove(1, 1));
     }
-    static int getRowFromSlot(int slot) {
-        if (slot < 1 || slot > 9) {
-            throw new IllegalArgumentException("Slot must be between 1 and 9");
+    static boolean isValidMove(int row, int col) {
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
         }
-        return (slot - 1) / 3;
-    }
-    static int getColFromSlot(int slot) {
-        if (slot < 1 || slot > 9) {
-            throw new IllegalArgumentException("Slot must be between 1 and 9");
+        if (board[row][col] != '-') {
+            return false;
         }
-        return (slot - 1) % 3;
+
+        return true;
     }
 }
